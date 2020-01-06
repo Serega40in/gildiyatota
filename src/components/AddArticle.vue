@@ -29,16 +29,6 @@
                     </v-col>
                     <v-col cols="12">
                         <quill-editor v-model="newBodytext"></quill-editor>
-                       <!-- <v-textarea v-model="newBodytext"></v-textarea>-->
-                        <!--<v-textarea
-                                v-model="newBodytext"
-                        >
-                            <template v-slot:label>
-                                <div>
-                                    Статья
-                                </div>
-                            </template>
-                        </v-textarea>-->
                     </v-col>
                     <v-col cols="12" sm="6">
                         <v-select
@@ -48,6 +38,13 @@
                                 multiple
                                 required
                         ></v-select>
+                    </v-col>
+                    <v-col cols="12" sm="6">
+                        <v-text-field
+                                v-model="newTags"
+                                label="Тэги"
+                                required
+                        ></v-text-field>
                     </v-col>
                 </v-row>
             </v-container>
@@ -63,21 +60,6 @@
 
     </v-card>
 </template>
-        <!--<form>
-            <label>Заголовок
-                <input v-model="newTitle" type="text"/>
-            </label>
-            <label>Автор
-                <input v-model="newAuthor" type="text"/>
-            </label>
-            <label>Статья
-                <input v-model="newBodytext" type="text"/>
-            </label>
-                <button type="submit" @click.prevent="addArticle()">Создать</button>
-
-        </form>
-    </div>
-</template>-->
 
 <script>
     import Vue from 'vue'
@@ -109,6 +91,7 @@
                 newAuthor: '',
                 newBodytext: '',
                 newSection: '',
+                newTags: '',
                 section: ['Новости', 'Статьи', 'Дневники'],
 /*                editorOption: {
                     theme: 'bubble'
@@ -120,7 +103,8 @@
                 this.newTitle = '',
                 this.newAuthor = '',
                 this.newBodytext = '',
-                this.newSection = ''
+                this.newSection = '',
+                this.newTags = ''
             },
             addArticle() {
                 this.snackbar = true
@@ -129,6 +113,7 @@
                     author: this.newAuthor,
                     bodytext: this.newBodytext,
                     section: this.newSection,
+                    tags: this.newTags,
                     date: new Date()
                 })
                 this.resetForm()

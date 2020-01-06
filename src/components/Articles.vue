@@ -1,16 +1,16 @@
 <template>
     <v-container>
-        <v-card class="accent">
+        <v-flex row wrap>
             <v-flex v-for="article in articles" v-bind:key="article.id" class="ma-5 pa-5">
-                <v-flex>
+                <v-card :to="{name:'article',params:{id:article.id}}" class="accent pa-3">
                     <h1>{{article.title}}</h1>
                     <p>{{article.author}}</p>
                     <p>{{article.date}}</p>
                     <p v-html="article.bodytext"></p>
-                </v-flex>
-
+                </v-card>
+                <v-spacer></v-spacer>
             </v-flex>
-        </v-card>
+        </v-flex>
     </v-container>
 </template>
 
@@ -19,6 +19,12 @@
         computed: {
             articles() {
                 return this.$store.getters.getArticles
+            }
+        },
+        props: {
+            "article": {
+                type: Object,
+                required: true
             }
         }
     }
