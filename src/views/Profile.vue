@@ -1,15 +1,15 @@
 <template>
 <v-container>
-    <add-article></add-article>
+    <v-card>
+        <h1>Профиль</h1>
+    </v-card>
 </v-container>
 </template>
 
 <script>
-    import AddArticle from "../components/AddArticle"
+
     export default {
-        components:{
-            AddArticle
-        }
+
     }
 </script>
 

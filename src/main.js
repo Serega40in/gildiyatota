@@ -3,9 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
+import VuetifyConfirm from 'vuetify-confirm'
 import firebase from 'firebase';
 import 'firebase/firestore'
 import VueQuillEditor from 'vue-quill-editor'
+
 
 // require styles
 import 'quill/dist/quill.core.css'
@@ -13,6 +15,11 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 
 Vue.use(VueQuillEditor )
+Vue.use(VuetifyConfirm, {
+  vuetify,
+  buttonTrueText: 'Да',
+  buttonFalseText: 'Нет'
+})
 
 Vue.config.productionTip = false
 
@@ -40,7 +47,11 @@ new Vue({
   vuetify,
   render: h => h(App),
   created() {
+    let vm = this
+    firebase.auth().onAuthStateChanged(function(user) {
+      vm.$store.dispatch('STATE_CHANGED', user)
+    });
     this.$store.dispatch('LOAD_ARTICLES')
-  },
+  }
 }).$mount('#app')
 

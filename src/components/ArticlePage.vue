@@ -1,10 +1,20 @@
 <template>
 <v-container>
-    <div>{{article.title}}</div>
-    <v-spacer></v-spacer>
-    <div>{{article.author}}</div>
-    <v-spacer></v-spacer>
-    <div v-html="article.bodytext"></div>
+    <div class="tl_page_wrap">
+        <div class="tl_page">
+            <main class="tl_article tl_article_editable">
+                <header class="tl_article_header">
+                    <h1 dir="auto">{{article.title}}</h1>
+                    <address dir="auto">
+                        <a rel="author">{{article.author}}</a>
+                        <time datetime="2020-01-06T22:24:08+0000">January 07, 2020</time>
+                    </address>
+                </header>
+                <article v-html="article.bodytext" id="_tl_editor" class="tl_article_content ql-container ql-disabled"></article>
+
+            </main>
+        </div>
+    </div>
 </v-container>
 </template>
 

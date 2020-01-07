@@ -3,7 +3,10 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Signin from '../views/Signin.vue'
 import Profile from '../views/Profile.vue'
-import ArticlePage from "../components/ArticlePage";
+import ArticlePage from "../components/ArticlePage"
+import AddArticle from "../components/AddArticle";
+
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -29,9 +32,9 @@ const routes = [
     component: Profile
   },
   {
-    path: '/successauth',
-    name: 'successauth',
-    component: Profile
+    path: '/addarticle',
+    name: 'addarticle',
+    component: AddArticle
   }
 ]
 
