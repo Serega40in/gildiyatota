@@ -28,13 +28,27 @@
 
         <v-app-bar
                 app
+                shrink-on-scroll
                 clipped-right
-                color="blue-grey"
-                dark
+                color="white"
+                light
         >
+
             <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-            <v-toolbar-title>Toolbar</v-toolbar-title>
+
+            <v-toolbar-img ></v-toolbar-img>
+            <v-img
+                    class="mx-2"
+                    src="https://firebasestorage.googleapis.com/v0/b/gildiyatota.appspot.com/o/phoen.png?alt=media&token=a76ed8a1-5689-4332-9b37-27112f572762"
+                    style="max-height: 200px ;max-width: 100px"
+
+            ></v-img>
+            <v-toolbar-title>
+                Гильдия Тота
+            </v-toolbar-title>
+
             <v-spacer />
+
             <v-app-bar-nav-icon @click.stop="drawerRight = !drawerRight" />
         </v-app-bar>
 

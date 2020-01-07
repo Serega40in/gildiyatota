@@ -1,6 +1,5 @@
 <template>
   <v-container class="home" grid-list-md>
-    <h1>HomePage</h1>
     <articles></articles>
   </v-container>
 </template>

@@ -1,12 +1,12 @@
 <template>
     <v-footer
             app
-            color="blue-grey"
-            class="white--text"
+            color="white"
+            light
     >
-        <span>Vuetify</span>
+        <span>Blog Ecosystems by 40in</span>
         <v-spacer />
-        <span>&copy; 2019</span>
+        <span>&copy; Цикл Фана</span>
     </v-footer>
 </template>
 

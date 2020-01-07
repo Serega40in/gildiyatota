@@ -20,12 +20,6 @@
             articles() {
                 return this.$store.getters.getArticles
             }
-        },
-        props: {
-            "article": {
-                type: Object,
-                required: true
-            }
         }
     }
 </script>
