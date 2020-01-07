@@ -4,7 +4,8 @@ import Home from '../views/Home.vue'
 import Signin from '../views/Signin.vue'
 import Profile from '../views/Profile.vue'
 import ArticlePage from "../components/ArticlePage"
-import AddArticle from "../components/AddArticle";
+import AddArticle from "../components/AddArticle"
+import Articles from "../components/Articles"
 
 
 Vue.use(VueRouter)
@@ -14,6 +15,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home
+  },
+  {
+    path: '/articles',
+    name: 'articles',
+    component: Articles
   },
   {
     path: '/article/:id',

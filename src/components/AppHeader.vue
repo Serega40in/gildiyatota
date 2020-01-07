@@ -23,9 +23,9 @@
                         <v-list-item-title>Выйти</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
-                <v-list-item :to="'/profile'">
+                <v-list-item :to="'/profile'" v-if="isUserAuthenticated">
                     <v-list-item-action>
-                        <v-icon>mdi-pencil-outline</v-icon>
+                        <v-icon>mdi-eye-settings-outline</v-icon>
                     </v-list-item-action>
                     <v-list-item-content>
                         <v-list-item-title>Профиль</v-list-item-title>
@@ -70,8 +70,8 @@
                 v-model="drawer"
                 app
         >
-            <v-list dense v-for="(item, i) in leftMenuItems"  v-bind:key="i" :to="item.route">
-                <v-list-item @click.prevent="'/articles'">
+            <v-list dense>
+                <v-list-item v-for="(item, i) in leftMenuItems"  v-bind:key="i" :to="item.route">
                     <v-list-item-action>
                         <v-icon>{{item.icon}}</v-icon>
                     </v-list-item-action>
@@ -110,6 +110,30 @@
             drawerRight: null,
             right: false,
             left: false,
+            leftMenuItems: [
+                {
+                    icon: 'mdi-brightness-4',
+                    title: 'База Знаний',
+                    route: '/articles',
+                },
+                {
+                    icon: 'mdi-newspaper-variant-multiple',
+                    title: 'Новости',
+                    route: '/articles',
+                    filteredBy: 'Новости'
+                },
+                {
+                    icon: 'mdi-meditation',
+                    title: 'Медитации',
+                    route: '/articles',
+                    filteredBy: 'Медитации'
+                },
+                {
+                    icon: 'mdi-information-variant',
+                    title: 'О сайте',
+                    route: '/about',
+                }
+            ]
         }),
         methods: {
             signout() {
@@ -122,33 +146,7 @@
         computed: {
             isUserAuthenticated() {
                 return this.$store.getters.isUserAuthenticated
-            }
-        },
-        rightMenuItems() {
-                 [
-                    {
-                        icon: 'mdi-brightness-4',
-                        title: 'База Знаний',
-                        route: '/articles',
-                    },
-                     {
-                         icon: 'mdi-news',
-                         title: 'Новости',
-                         route: '/articles',
-                         filteredBy: 'Новости'
-                     },
-                     {
-                         icon: 'mdi-meditation',
-                         title: 'Медитации',
-                         route: '/articles',
-                         filteredBy: 'Медитации'
-                     },
-                    {
-                        icon: 'mdi-about',
-                        title: 'О сайте',
-                        route: '/about',
-                    }
-                ]
+            },
         }
     }
 </script>

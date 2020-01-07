@@ -1,10 +1,10 @@
 <template>
     <v-content>
         <v-container
-                class="fill-height"
+                class="fill-height text-center"
                 fluid
         >
-            <section id="firebaseui-auth-container"></section>
+            <section class="ma-auto" id="firebaseui-auth-container"></section>
         </v-container>
     </v-content>
 </template>

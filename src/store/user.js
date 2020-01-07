@@ -4,18 +4,33 @@ export default {
     state: {
         user: {
             isAuthenticated: false,
-            uid: null
+            uid: null,
+            displayName: '',
+            email: '',
+            photoURL: '',
+            isAnonymous: true,
+            providerData: ''
         }
     },
     mutations: {
         SET_USER(state, payload) {
-            state.user.isAuthenticated = true
-            state.user.uid = payload
+            state.user.isAuthenticated = true,
+            state.user.uid = payload.uid,
+            state.user.displayName = payload.displayName,
+            state.user.email = payload.email,
+            state.user.photoURL = payload.photoURL,
+            state.user.isAnonymous = payload.isAnonymous,
+            state.user.providerData = payload.providerData
         },
         UNSET_USER(state) {
             state.user = {
                 isAuthenticated: false,
-                uid: null
+                uid: null,
+                displayName: '',
+                email: '',
+                photoURL: '',
+                isAnonymous: true,
+                providerData: ''
             }
         }
     },
@@ -51,7 +66,7 @@ export default {
         },
         STATE_CHANGED({commit}, payload){
             if (payload){
-                commit('SET_USER', payload.uid)
+                commit('SET_USER', payload)
             } else {
                 commit('UNSET_USER')
             }
@@ -59,6 +74,7 @@ export default {
         }
     },
     getters: {
-        isUserAuthenticated: (state) => state.user.isAuthenticated
+        isUserAuthenticated: (state) => state.user.isAuthenticated,
+        getUser: (state) => state.user
     }
 }
