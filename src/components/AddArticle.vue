@@ -1,5 +1,5 @@
 <template>
-    <v-card flat>
+    <v-card class="text-center pa-2 ma-5">
         <v-snackbar
                 v-model="snackbar"
                 absolute
@@ -22,13 +22,14 @@
                     </v-col>
                     <v-col cols="12" sm="6">
                         <v-text-field
-                                v-model="newAuthor"
+                                v-model="getUser.displayName"
                                 label="Автор"
                                 required
                         ></v-text-field>
                     </v-col>
                     <v-col cols="12">
-                        <quill-editor v-model="newBodytext"></quill-editor>
+                        <quill-editor v-model="newBodytext"
+                                      :options="editorOption"></quill-editor>
                     </v-col>
                     <v-col cols="12" sm="6">
                         <v-select
@@ -89,19 +90,18 @@
                 snackbar: false,
                 newTitle: '',
                 newAuthor: '',
-                newBodytext: '',
+                newBodytext: `<h2><span class="ql-font-monospace">Напишите здесь вашу историю...</span></h2>`,
                 newSection: '',
                 newTags: '',
-                section: ['Новости', 'Статьи', 'Дневники'],
-/*                editorOption: {
-                    theme: 'bubble'
-                }*/
+                section: ['Новости', 'Статьи', 'Медитации', 'База Знаний'],
+                editorOption: {
+                    theme: 'snow'
+                },
             }
         },
         methods: {
             resetForm () {
                 this.newTitle = '',
-                this.newAuthor = '',
                 this.newBodytext = '',
                 this.newSection = '',
                 this.newTags = ''
@@ -110,7 +110,7 @@
                 this.snackbar = true
                 Vue.$db.collection('articles').add({
                     title: this.newTitle,
-                    author: this.newAuthor,
+                    author: this.getUser.displayName,
                     bodytext: this.newBodytext,
                     section: this.newSection,
                     tags: this.newTags,
@@ -120,10 +120,12 @@
             }
         },
         computed: {
+            getUser() {
+                return this.$store.getters.getUser
+            },
             formIsValid () {
                 return (
                     this.newTitle &&
-                    this.newAuthor &&
                     this.newBodytext &&
                     this.newSection
                 )
@@ -132,6 +134,20 @@
     }
 </script>
 
-<style scoped>
-
+<style>
+    .ql-container {
+        border: none!important;
+        border-top: 1px solid #ececec!important;
+    }
+    .ql-editor {
+        min-height: 300px!important;
+    }
+    .ql-toolbar {
+        border: 0px!important;
+    }
+    .quill-editor {
+        border: 1px solid #ececec!important;
+        min-height: 300px!important;
+        border-radius: 20px!important;
+    }
 </style>

@@ -1,19 +1,20 @@
 <template>
     <v-container>
         <v-layout row wrap>
-            <v-flex xs12 sm10 md8 offset-sm1 offset-md-2>
+            <v-flex xs12 sm10 md8 offset-sm1>
                 <v-container>
                     <v-layout row>
                         <v-flex xs6 md7>
                             <v-text-field label='Поиск' v-model="searchTerm"></v-text-field>
                         </v-flex>
                         <v-flex offset-1 xs5 md4>
-                            <v-select label='Раздел' :items="sections" v-model="section" multiple></v-select>
+                            <v-select label='Раздел' :items="section" v-model="section" multiple disabled></v-select>
                         </v-flex>
                     </v-layout>
                 </v-container>
             </v-flex>
-            <v-flex v-for="article in filteredArticles" v-bind:key="article.id" xs12 sm10 md8 offset-sm1 offset-md-2>
+            <v-flex offset-sm1 offset-xs2 xs12 sm12 md12><h1>Новости Гильдии</h1></v-flex>
+            <v-flex v-for="article in sortedList" v-bind:key="article.id" onsort="!article.date" xs12 sm10 md8 offset-sm1 offset-md-2>
                 <v-card :to="{name:'article',params:{id:article.id}}" class="ma-5">
                     <div class="tl_page_wrap">
                         <div class="tl_page">
@@ -46,11 +47,13 @@
         }
     })
 
+
+
     export default {
         data(){
             return {
                 searchTerm: null,
-                section: [],
+                section: ['Новости'],
                 sections: ['Новости', 'Статьи', 'Медитации', 'База Знаний'],
             }
         },
@@ -69,6 +72,11 @@
                     articles = articles.filter(b => this.section.filter(val => b.section.indexOf(val) !== -1).length > 0)
 
                 return articles
+            },
+            sortedList() {
+                let fa = this.filteredArticles
+                let sortByDate = function (d1, d2) {return (d2.date > d1.date) ? 1 : -1;};
+                return fa.sort(sortByDate);
             }
         }
     }

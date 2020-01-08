@@ -6,6 +6,8 @@ import Profile from '../views/Profile.vue'
 import ArticlePage from "../components/ArticlePage"
 import AddArticle from "../components/AddArticle"
 import Articles from "../components/Articles"
+import News from '../views/News'
+import Meditations from '../views/Meditations'
 
 
 Vue.use(VueRouter)
@@ -41,6 +43,16 @@ const routes = [
     path: '/addarticle',
     name: 'addarticle',
     component: AddArticle
+  },
+  {
+    path: '/news',
+    name: 'news',
+    component: News
+  },
+  {
+    path: '/meditations',
+    name: 'meditations',
+    component: Meditations
   }
 ]
 

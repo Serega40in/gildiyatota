@@ -5,9 +5,9 @@ export default {
         user: {
             isAuthenticated: false,
             uid: null,
-            displayName: '',
-            email: '',
-            photoURL: '',
+            displayName: 'Анонимус',
+            email: 'aninim@none.ru',
+            photoURL: 'https://firebasestorage.googleapis.com/v0/b/gildiyatota.appspot.com/o/Tribal%20Marijuana%20Leaf%20Royalty%20Free%20Vector%20Image.jpg?alt=media&token=de2f5e30-73af-4ce0-9fb3-2c717dba6d41',
             isAnonymous: true,
             providerData: ''
         }

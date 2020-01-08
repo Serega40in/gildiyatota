@@ -15,7 +15,7 @@
                         <v-list-item-title>Войти</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
-                <v-list-item :to="'/'"  @click.prevent="signout" v-if="isUserAuthenticated">
+                <v-list-item @click.prevent="signout" v-if="isUserAuthenticated">
                     <v-list-item-action>
                         <v-icon>mdi-exit-to-app</v-icon>
                     </v-list-item-action>
@@ -119,13 +119,12 @@
                 {
                     icon: 'mdi-newspaper-variant-multiple',
                     title: 'Новости',
-                    route: '/articles',
-                    filteredBy: 'Новости'
+                    route: '/news'
                 },
                 {
                     icon: 'mdi-meditation',
                     title: 'Медитации',
-                    route: '/articles',
+                    route: '/meditations',
                     filteredBy: 'Медитации'
                 },
                 {
@@ -140,6 +139,7 @@
                 this.$confirm('Вы действительно хотите выйти?').then(res => {
                     if (res)
                         this.$store.dispatch('SIGNOUT')
+                        this.$router.go('/')
                 })
             }
         },

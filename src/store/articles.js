@@ -22,7 +22,9 @@ export default{
                             title: data.title,
                             author: data.author,
                             bodytext: data.bodytext,
-                            date: data.date
+                            date: data.date,
+                            section: data.section,
+                            tags: data.tags
                         }
 
                         articles.push(article)
