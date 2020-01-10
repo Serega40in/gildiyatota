@@ -24,7 +24,8 @@ export default{
                             bodytext: data.bodytext,
                             date: data.date,
                             section: data.section,
-                            tags: data.tags
+                            tags: data.tags,
+                            imgUrl: data.imgUrl
                         }
 
                         articles.push(article)

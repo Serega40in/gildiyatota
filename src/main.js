@@ -7,6 +7,7 @@ import VuetifyConfirm from 'vuetify-confirm'
 import firebase from 'firebase';
 import 'firebase/firestore'
 import VueQuillEditor from 'vue-quill-editor'
+import styles from './css/core.css'
 
 
 // require styles
@@ -44,6 +45,7 @@ firebase.analytics()
 new Vue({
   router,
   store,
+  styles,
   vuetify,
   render: h => h(App),
   created() {

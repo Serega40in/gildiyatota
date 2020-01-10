@@ -8,6 +8,7 @@ import AddArticle from "../components/AddArticle"
 import Articles from "../components/Articles"
 import News from '../views/News'
 import Meditations from '../views/Meditations'
+import Activity from '../views/Activity'
 
 
 Vue.use(VueRouter)
@@ -53,6 +54,11 @@ const routes = [
     path: '/meditations',
     name: 'meditations',
     component: Meditations
+  },
+  {
+    path: '/activity',
+    name: 'activity',
+    component: Activity
   }
 ]
 

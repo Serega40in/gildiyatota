@@ -26,7 +26,12 @@
                                         <time datetime="2020-01-06T22:24:08+0000">{{article.date.toDate() | formatDate}}</time>
                                     </address>
                                 </header>
-                                <article v-html="article.bodytext.substring(0,170)" id="_tl_editor" class="tl_article_content ql-container ql-disabled"></article>
+                                <article v-html="article.bodytext.substring(0,170)+'.......'" id="_tl_editor" class="tl_article_content ql-container ql-disabled"></article>
+                                <v-flex row wpar xs12 md12 sm12>
+                                    <v-flex></v-flex>
+                                    <v-spacer></v-spacer>
+                                    <v-btn>Читать</v-btn>
+                                </v-flex>
                             </main>
                         </div>
                     </div>

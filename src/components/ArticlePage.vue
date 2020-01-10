@@ -34,6 +34,9 @@
     }
 </script>
 
-<style scoped>
-
+<style>
+    .ql-editor .ql-video.ql-align-center {
+        width: 800px;
+        height: 460px;
+    }
 </style>

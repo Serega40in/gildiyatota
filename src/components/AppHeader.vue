@@ -125,12 +125,16 @@
                     icon: 'mdi-meditation',
                     title: 'Медитации',
                     route: '/meditations',
-                    filteredBy: 'Медитации'
+                },
+                {
+                    icon: 'mdi-nfc',
+                    title: 'Мероприятия',
+                    route: '/activity',
                 },
                 {
                     icon: 'mdi-information-variant',
                     title: 'О сайте',
-                    route: '/about',
+                    route: 'article/PwUXKcxilHM4gAr3E1HZ',
                 }
             ]
         }),
@@ -150,3 +154,8 @@
         }
     }
 </script>
+<style>
+    .v-list-item__title {
+        font-size: 1rem!important;
+    }
+</style>
