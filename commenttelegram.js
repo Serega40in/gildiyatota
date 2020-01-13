@@ -211,9 +211,9 @@
     for (var prop in styles) {
       iframe.style[prop] = styles[prop];
     }
-    
-    document.body.appendChild(iframe);
-    
+     if (widgetEl.parentNode) {
+    alert(iframe);
+     }
     addEvent(iframe, 'load', function() {
       removeEvent(iframe, 'load', visibilityHandler);
       addEvent(window, 'scroll', visibilityHandler);
