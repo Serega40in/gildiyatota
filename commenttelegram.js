@@ -212,7 +212,7 @@
       iframe.style[prop] = styles[prop];
     }
     
-    document.getElementById(telcomment).insertBefore(iframe, widgetEl);
+    document.getElementById(telcomment).appendChild(iframe);
     
     addEvent(iframe, 'load', function() {
       removeEvent(iframe, 'load', visibilityHandler);
