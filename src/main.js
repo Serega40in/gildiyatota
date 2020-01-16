@@ -7,7 +7,7 @@ import VuetifyConfirm from 'vuetify-confirm'
 import firebase from 'firebase';
 import 'firebase/firestore'
 import VueQuillEditor from 'vue-quill-editor'
-import styles from './css/core.css'
+
 
 
 // require styles
@@ -22,7 +22,7 @@ Vue.use(VuetifyConfirm, {
   buttonFalseText: 'Нет'
 })
 
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
 const firebaseConfig = {
   apiKey: "AIzaSyC-cZOVyTZL_KH3z1dSYASAQ1lBMIOuwUE",
@@ -45,7 +45,6 @@ firebase.analytics()
 new Vue({
   router,
   store,
-  styles,
   vuetify,
   render: h => h(App),
   created() {

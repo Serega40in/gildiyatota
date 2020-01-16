@@ -15,7 +15,7 @@
             </v-flex>-->
             <v-flex offset-sm1 offset-xs2 xs12 sm12 md12><h1>Медитации</h1></v-flex>
             <v-flex v-for="article in filteredArticles" v-bind:key="article.id" onsort="!article.date" xs12 sm10 md8 offset-sm1 offset-md-2>
-                <v-card :to="{name:'article',params:{id:article.id}}" class="ma-5">
+                <v-card :to="{name:'article',params:{id:article.id}}" class="ma-1 mt-3">
                     <div class="tl_page_wrap">
                         <div class="tl_page">
                             <main class="tl_article tl_article_editable">

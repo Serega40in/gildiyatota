@@ -3,6 +3,7 @@
             app
             color="white"
             light
+            absolute
     >
         <span>Blog Ecosystems by 40in</span>
         <v-spacer />

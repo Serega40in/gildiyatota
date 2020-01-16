@@ -14,7 +14,7 @@
                 </v-container>
             </v-flex>
             <v-flex v-for="article in filteredArticles" v-bind:key="article.id" xs12 sm10 md8 offset-sm1 offset-md-2>
-                <v-card :to="{name:'article',params:{id:article.id}}" class="ma-5">
+                <v-card :to="{name:'article',params:{id:article.id}}" class="ma-1 mt-3">
                     <div class="tl_page_wrap">
                         <div class="tl_page">
                             <main class="tl_article tl_article_editable">

@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+/*import Home from '../views/Home.vue'*/
 import Signin from '../views/Signin.vue'
 import Profile from '../views/Profile.vue'
 import ArticlePage from "../components/ArticlePage"
 import AddArticle from "../components/AddArticle"
 import Articles from "../components/Articles"
 import News from '../views/News'
+import Video from '../views/Video'
 import Meditations from '../views/Meditations'
 import Activity from '../views/Activity'
 
@@ -16,8 +17,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
+    name: 'news',
+    component: News
   },
   {
     path: '/articles',
@@ -59,7 +60,12 @@ const routes = [
     path: '/activity',
     name: 'activity',
     component: Activity
-  }
+  },
+  {
+    path: '/video',
+    name: 'video',
+    component: Video
+  },
 ]
 
 const router = new VueRouter({

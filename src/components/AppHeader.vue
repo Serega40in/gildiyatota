@@ -54,7 +54,7 @@
 
             <v-img
                     class="mx-2"
-                    src="https://firebasestorage.googleapis.com/v0/b/gildiyatota.appspot.com/o/phoen.png?alt=media&token=a76ed8a1-5689-4332-9b37-27112f572762"
+                    src="https://firebasestorage.googleapis.com/v0/b/gildiyatota.appspot.com/o/sunmoon.png?alt=media&token=7dcf6e50-1059-4b1b-9659-121a1cff67b7"
                     style="max-height: 200px ;max-width: 100px"
             ></v-img>
             <v-toolbar-title>
@@ -79,6 +79,18 @@
                         <v-list-item-title>{{item.title}}</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
+            </v-list>
+            <v-list>
+                <v-card-text>
+                    <v-btn
+                            v-for="socicon in socIcons"
+                            :key="socicon"
+                            icon
+                            class="mx-3 white--text"
+                    >
+                        <v-icon size="24px">{{ socicon.icon }}</v-icon>
+                    </v-btn>
+                </v-card-text>
             </v-list>
         </v-navigation-drawer>
 
@@ -110,16 +122,23 @@
             drawerRight: null,
             right: false,
             left: false,
-            leftMenuItems: [
+            socIcons: [
                 {
-                    icon: 'mdi-brightness-4',
-                    title: 'База Знаний',
-                    route: '/articles',
+                    icon: 'mdi-instagram',
+                    route: '/news'
                 },
+
+            ],
+            leftMenuItems: [
                 {
                     icon: 'mdi-newspaper-variant-multiple',
                     title: 'Новости',
                     route: '/news'
+                },
+                {
+                    icon: 'mdi-brightness-4',
+                    title: 'База Знаний',
+                    route: '/articles',
                 },
                 {
                     icon: 'mdi-meditation',
@@ -132,9 +151,14 @@
                     route: '/activity',
                 },
                 {
+                    icon: 'mdi-library-video',
+                    title: 'Видео',
+                    route: '/video',
+                },
+                {
                     icon: 'mdi-information-variant',
                     title: 'О сайте',
-                    route: 'article/PwUXKcxilHM4gAr3E1HZ',
+                    route: '../article/PwUXKcxilHM4gAr3E1HZ',
                 }
             ]
         }),

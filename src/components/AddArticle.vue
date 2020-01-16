@@ -102,11 +102,17 @@
                 <aside class="tl_article_buttons">
                     <div class="account account_top"></div>
                     <button id="_edit_button" class="button edit_button">Редактировать</button>
-                    <button id="_publish_button" class="button publish_button"
+<!--                    <button id="_publish_button" class="button publish_button"
                             :disabled="!formIsValid"
                             text
                             color="primary"
-                            type="submit">Опубликовать</button>
+                            type="submit">Опубликовать</button>-->
+                    <v-btn
+                            :disabled="!formIsValid"
+                            text
+                            color="primary"
+                            type="submit"
+                    >Опубликовать</v-btn>
                     <div class="account account_bottom"></div>
                     <div id="_error_msg" class="error_msg"></div>
                 </aside>

@@ -11,7 +11,9 @@
                     </address>
                 </header>
                 <article v-html="article.bodytext" id="_tl_editor" class="tl_article_content ql-container ql-disabled"></article>
-
+                <br>
+                <br>
+                <tel-comments></tel-comments>
             </main>
         </div>
     </div>
@@ -19,6 +21,7 @@
 </template>
 
 <script>
+    import TelComments from "./TelComments";
     export default {
         props: {
             'id': {
@@ -31,6 +34,9 @@
                 return this.$store.getters.getArticles.find(a => a.id == this.id)
             }
         },
+        components: {
+            TelComments
+        }
     }
 </script>
 

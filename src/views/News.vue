@@ -15,7 +15,7 @@
             </v-flex>
             <v-flex offset-sm1 offset-xs2 xs12 sm12 md12><h1>Новости Гильдии</h1></v-flex>
             <v-flex v-for="article in sortedList" v-bind:key="article.id" onsort="!article.date" xs12 sm10 md8 offset-sm1 offset-md-2>
-                <v-card :to="{name:'article',params:{id:article.id}}" class="ma-5">
+                <v-card :to="{name:'article',params:{id:article.id}}" class="ma-1 mt-3">
                     <div class="tl_page_wrap">
                         <div class="tl_page">
                             <main class="tl_article tl_article_editable">
@@ -36,6 +36,8 @@
                         </div>
                     </div>
                 </v-card>
+                <!--<v-flex v-html="`<script async src='https://telegram.org/js/telegram-widget.js?7' data-telegram-post='gildiyatota/{{i}}' data-width='100%' data-userpic='false'></script>`">
+                </v-flex>-->
                 <v-spacer></v-spacer>
             </v-flex>
         </v-layout>
