@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import Vue from 'vue'
 
 export default {
     state: {
@@ -14,13 +15,39 @@ export default {
     },
     mutations: {
         SET_USER(state, payload) {
-            state.user.isAuthenticated = true,
-            state.user.uid = payload.uid,
-            state.user.displayName = payload.displayName,
-            state.user.email = payload.email,
-            state.user.photoURL = payload.photoURL,
-            state.user.isAnonymous = payload.isAnonymous,
-            state.user.providerData = payload.providerData
+            state.user.isAuthenticated = true
+            if( Vue.$db.collection('users').where('uid','==',state.user.uid).get()
+                    .then(querySnapshot => {
+                        querySnapshot.forEach(s => {
+                        const data = s.data()
+                        state.user.uid = data.uid,
+                        state.user.displayName = data.displayName,
+                        state.user.email = data.email,
+                        state.user.photoURL = data.photoURL,
+                        state.user.isAnonymous = data.isAnonymous,
+                        state.user.providerData = data.providerData
+                        })
+                    })
+                    .catch()
+            ){
+                    return
+            } else {
+                    state.user.uid = payload.uid,
+                    state.user.displayName = payload.displayName,
+                    state.user.email = payload.email,
+                    state.user.photoURL = payload.photoURL,
+                    state.user.isAnonymous = payload.isAnonymous,
+                    state.user.providerData = payload.providerData,
+                alert('go!'),
+                    Vue.$db.collection('users').add({
+                        uid: payload.uid,
+                        displayName: payload.displayName,
+                        email: payload.email,
+                        photoURL: payload.photoURL,
+                        providerData: payload.providerData
+                    })
+
+            }
         },
         UNSET_USER(state) {
             state.user = {

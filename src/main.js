@@ -53,6 +53,7 @@ new Vue({
       vm.$store.dispatch('STATE_CHANGED', user)
     });
     this.$store.dispatch('LOAD_ARTICLES')
+    this.$store.dispatch('LOAD_USERS')
   }
 }).$mount('#app')
 

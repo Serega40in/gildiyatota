@@ -6,6 +6,7 @@ import Profile from '../views/Profile.vue'
 import ArticlePage from "../components/ArticlePage"
 import AddArticle from "../components/AddArticle"
 import Articles from "../components/Articles"
+import Users from "../views/Users"
 import News from '../views/News'
 import Video from '../views/Video'
 import Meditations from '../views/Meditations'
@@ -24,6 +25,11 @@ const routes = [
     path: '/articles',
     name: 'articles',
     component: Articles
+  },
+  {
+    path: '/users',
+    name: 'users',
+    component: Users
   },
   {
     path: '/article/:id',

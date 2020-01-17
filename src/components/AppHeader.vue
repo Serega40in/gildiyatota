@@ -83,12 +83,12 @@
             <v-list>
                 <v-card-text>
                     <v-btn
-                            v-for="socicon in socIcons"
-                            :key="socicon"
+                            v-for="(item, i) in socIcons"
+                            v-bind:key="i"
                             icon
                             class="mx-3 white--text"
                     >
-                        <v-icon size="24px">{{ socicon.icon }}</v-icon>
+                        <v-icon size="24px">{{ item.icon }}</v-icon>
                     </v-btn>
                 </v-card-text>
             </v-list>
@@ -127,7 +127,10 @@
                     icon: 'mdi-instagram',
                     route: '/news'
                 },
-
+                {
+                    icon: 'mdi-telegram',
+                    route: '/telegram'
+                }
             ],
             leftMenuItems: [
                 {
