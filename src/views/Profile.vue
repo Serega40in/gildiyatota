@@ -26,6 +26,19 @@
                 <v-row class="text-center" xs6 md6>
                     <v-avatar class="ma-auto" primary size="150">
                         <img :src="user.photoURL" alt="user photo">
+                        <picture-input
+                                ref="pictureInput"
+                                @change="onChanged"
+                                @remove="onRemoved"
+                                :width="500"
+                                :removable="true"
+                                removeButtonClass="ui red button"
+                                :height="500"
+                                accept="image/jpeg, image/png, image/gif"
+                                buttonClass="ui button primary"
+                                :customStrings="{
+                                  upload: '<h1>Upload it!</h1>',
+                                  drag: 'Drag and drop your image here'}"></picture-input>
                     </v-avatar>
                 </v-row>
             </v-flex>

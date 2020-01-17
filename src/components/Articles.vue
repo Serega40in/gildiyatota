@@ -1,10 +1,10 @@
 <template>
     <v-container>
         <v-layout row wrap>
-            <v-flex xs12 sm10 md8 offset-sm1 offset-md-2>
+            <v-flex xs12 sm12 md12 ma-1 mx-5>
                 <v-container>
                     <v-layout row>
-                        <v-flex xs6 md7>
+                        <v-flex xs6 md7 px-2>
                             <v-text-field label='Поиск' v-model="searchTerm"></v-text-field>
                         </v-flex>
                         <v-flex offset-1 xs5 md4>
@@ -13,8 +13,64 @@
                     </v-layout>
                 </v-container>
             </v-flex>
-            <v-flex v-for="article in filteredArticles" v-bind:key="article.id" xs12 sm10 md8 offset-sm1 offset-md-2>
-                <v-card :to="{name:'article',params:{id:article.id}}" class="ma-1 mt-3">
+            <v-flex xs12 sm12 md12>
+                <v-container row ma-auto>
+                    <v-layout v-for="article in filteredArticles" v-bind:key="article.id" sm12 xs4 md4 ma-1 offset-md1>
+                        <v-flex ma-1>
+                        <v-card
+                                max-width="344"
+                                class="mx-auto ma-auto"
+
+                        >
+                            <v-list-item>
+                                <v-list-item-avatar color="grey"></v-list-item-avatar>
+                                <v-list-item-content>
+                                    <v-list-item-title class="headline">{{article.title}}</v-list-item-title>
+                                    <v-list-item-subtitle>
+                                        <span style="font-weight: bold">{{article.author}}</span>
+                                        <br>
+                                        <time style="font-size: smaller" datetime="2020-01-06T22:24:08+0000">{{article.date.toDate() | formatDate}}</time>
+                                    </v-list-item-subtitle>
+                                </v-list-item-content>
+                            </v-list-item>
+
+                            <v-img
+                                    src="https://proznayka.ru/images/contentHead/63.jpg"
+                                    height="194"
+                            ></v-img>
+
+                            <v-card-text v-html="article.bodytext.substring(0,130)+'.......'">
+
+                            </v-card-text>
+
+                            <v-card-actions>
+                                <v-btn
+                                        text
+                                        color="primary accent-4"
+                                        :to="{name:'article',params:{id:article.id}}"
+                                >
+                                    Читать
+                                </v-btn>
+                                <v-btn
+                                        text
+                                        color="primary accent-4"
+                                >
+                                    Подписаться
+                                </v-btn>
+                                <v-spacer></v-spacer>
+                                <v-btn icon>
+                                    <v-icon>mdi-heart</v-icon>
+                                </v-btn>
+                                <v-btn icon>
+                                    <v-icon>mdi-share-variant</v-icon>
+                                </v-btn>
+                            </v-card-actions>
+                        </v-card>
+                        </v-flex>
+                    </v-layout>
+                </v-container>
+
+                <!--<v-card :to="{name:'article',params:{id:article.id}}" class="ma-1 mt-3">
                     <div class="tl_page_wrap">
                         <div class="tl_page">
                             <main class="tl_article tl_article_editable">
@@ -34,8 +90,7 @@
                             </main>
                         </div>
                     </div>
-                </v-card>
-                <v-spacer></v-spacer>
+                </v-card>-->
             </v-flex>
         </v-layout>
     </v-container>

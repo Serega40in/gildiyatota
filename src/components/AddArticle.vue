@@ -12,7 +12,7 @@
     </v-snackbar>
     <div class="tl_page_wrap">
         <div class="tl_page">
-            <v-form ref="form" @submit.prevent="addArticle()">
+            <v-form ref="form">
             <main class="tl_article tl_article_editable tl_article_edit title_focused">
                 <header class="tl_article_header">
                     <h1 dir="auto"></h1>
@@ -23,6 +23,7 @@
                 </header>
                 <article id="_tl_editor" class="tl_article_content ql-container">
                         <v-textarea
+                                :disabled="!isEdit"
                                 class="empty tl_article_h1"
                                 data-placeholder="Заголовок"
                                 data-label="Title"
@@ -34,6 +35,7 @@
                                 required
                         ></v-textarea>
                         <v-textarea
+                                :disabled="!isEdit"
                                 tag="address"
                                 data-placeholder="Ваше имя"
                                 data-label="Author"
@@ -48,11 +50,13 @@
                         ></v-textarea>
                     <quill-editor v-model="newBodytext"
                                   :options="editorOption"
-                                  class="empty"></quill-editor>
+                                  class="empty"
+                                  :disabled="!isEdit"></quill-editor>
                     <v-container fluid>
                         <v-row>
                             <v-col cols="5" sm="5" md="5" xs="5">
                                 <v-select
+                                        :disabled="!isEdit"
                                         class="tl_article_address"
                                         v-model="newSection"
                                         :items="section"
@@ -64,6 +68,7 @@
                             <v-col cols="2" sm="2" md="2" xs="2"></v-col>
                             <v-col cols="5" sm="5" md="5" xs="5">
                                 <v-text-field
+                                        :disabled="!isEdit"
                                         class="tl_article_address"
                                         v-model="newTags"
                                         label="Тэги"
@@ -100,21 +105,45 @@
                 </div></article>
 
                 <aside class="tl_article_buttons">
-                    <div class="account account_top"></div>
-                    <button id="_edit_button" class="button edit_button">Редактировать</button>
-<!--                    <button id="_publish_button" class="button publish_button"
-                            :disabled="!formIsValid"
-                            text
-                            color="primary"
-                            type="submit">Опубликовать</button>-->
+
                     <v-btn
+                            v-if="isEdit"
                             :disabled="!formIsValid"
                             text
                             color="primary"
-                            type="submit"
+                            @click="addArticle()"
                     >Опубликовать</v-btn>
-                    <div class="account account_bottom"></div>
-                    <div id="_error_msg" class="error_msg"></div>
+                    <v-btn
+                            v-if="!isEdit"
+                            text
+                            color="primary"
+                            @click="updateArticle()"
+                    >Редактировать</v-btn>
+                    <v-btn
+                            v-if="!isEdit"
+                            text
+                            color="primary"
+                            @click="deleteArticle()"
+                    >Удалить</v-btn>
+                    <v-btn
+                            v-if="!isEdit"
+                            text
+                            color="primary"
+                            @click="resetForm()"
+                    >Новая статья</v-btn>
+                    <v-btn
+                            v-if="!isEdit"
+                            text
+                            color="primary"
+                            @click="getId()"
+                    >ID</v-btn>
+                    <v-btn
+                            v-if="!isEdit"
+                            text
+                            color="primary"
+                            @click="setId(5)"
+                    >setID</v-btn>
+
                 </aside>
             </main>
             </v-form>
@@ -130,6 +159,8 @@
     export default {
         data () {
             return {
+                id: '',
+                isEdit: true,
                 snackbar: false,
                 newTitle: '',
                 newAuthor: '',
@@ -150,11 +181,24 @@
             }
         },
         methods: {
+            getId() {
+                alert(this.id)
+                return this.id
+            },
+            setId(id){
+              return this.id = id
+            },
+            switchIsEdit() {
+                if(this.isEdit){ this.isEdit = false} else {
+                    this.isEdit = true
+                }
+            },
             resetForm () {
                 this.newTitle = '',
                 this.newBodytext = '',
                 this.newSection = '',
-                this.newTags = ''
+                this.newTags = '',
+                this.switchIsEdit()
             },
             addArticle() {
                 this.snackbar = true
@@ -165,8 +209,18 @@
                     section: this.newSection,
                     tags: this.newTags,
                     date: new Date()
+                }).then()
+                this.switchIsEdit()
+            },
+            updateArticle() {
+                this.switchIsEdit()
+            },
+            deleteArticle() {
+                let tempId = this.id
+                alert(tempId)
+                Vue.$db.collection('articles').doc(tempId).delete().then(function() {
+                    alert('good!');
                 })
-                this.resetForm()
             }
         },
         computed: {
@@ -185,15 +239,7 @@
 </script>
 
 <style>
-/*    .ql-container {
 
-    }
-    .ql-editor {
-        min-height: 300px!important;
-    }
-    .ql-toolbar {
-        border: 0px!important;
-    }*/
     .quill-editor {
         border: 0px!important;
         min-height: 190px!important;
