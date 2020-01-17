@@ -7,6 +7,7 @@ import ArticlePage from "../components/ArticlePage"
 import AddArticle from "../components/AddArticle"
 import Articles from "../components/Articles"
 import Users from "../views/Users"
+import UserPage from "../views/UserPage"
 import News from '../views/News'
 import Video from '../views/Video'
 import Meditations from '../views/Meditations'
@@ -30,6 +31,12 @@ const routes = [
     path: '/users',
     name: 'users',
     component: Users
+  },
+  {
+    path: '/user/:id',
+    name: 'user',
+    props: true,
+    component: UserPage
   },
   {
     path: '/article/:id',

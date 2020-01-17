@@ -121,67 +121,6 @@
         </div>
     </div>
 </v-container>
-    <!--<v-card class="text-center pa-2 ma-5">
-        <v-snackbar
-                v-model="snackbar"
-                absolute
-                top
-                right
-                color="success"
-        >
-            <span>Статья создана!</span>
-            <v-icon dark>mdi-checkbox-marked-circle</v-icon>
-        </v-snackbar>
-        <v-form ref="form" @submit.prevent="addArticle()">
-            <v-container fluid>
-                <v-row>
-                    <v-col cols="12" sm="6">
-                        <v-text-field
-                                v-model="newTitle"
-                                label="Заголовок"
-                                required
-                        ></v-text-field>
-                    </v-col>
-                    <v-col cols="12" sm="6">
-                        <v-text-field
-                                v-model="getUser.displayName"
-                                label="Автор"
-                                required
-                        ></v-text-field>
-                    </v-col>
-                    <v-col cols="12">
-                        <quill-editor v-model="newBodytext"
-                                      :options="editorOption"></quill-editor>
-                    </v-col>
-                    <v-col cols="12" sm="6">
-                        <v-select
-                                v-model="newSection"
-                                :items="section"
-                                label="Раздел"
-                                multiple
-                                required
-                        ></v-select>
-                    </v-col>
-                    <v-col cols="12" sm="6">
-                        <v-text-field
-                                v-model="newTags"
-                                label="Тэги"
-                                required
-                        ></v-text-field>
-                    </v-col>
-                </v-row>
-            </v-container>
-            <v-card-actions>
-                <v-btn
-                        :disabled="!formIsValid"
-                        text
-                        color="primary"
-                        type="submit"
-                >Создать</v-btn>
-            </v-card-actions>
-        </v-form>
-
-    </v-card>-->
 </template>
 
 <script>

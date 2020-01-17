@@ -1,5 +1,15 @@
 <template>
 <v-container>
+    <v-snackbar
+            v-model="snackbar"
+            absolute
+            top
+            right
+            color="success"
+    >
+        <span>Изменения сохранены!</span>
+        <v-icon dark>mdi-checkbox-marked-circle</v-icon>
+    </v-snackbar>
     <v-card class="text-center pa-2">
         <h1 class="mb-10">Профиль</h1>
         <v-container class="text-center">
@@ -25,9 +35,10 @@
 </template>
 
 <script>
-    import firebase from 'firebase'
+    import Vue from 'vue'
     export default {
         data: () => ({
+            snackbar: false,
             displayName: 'Анонимус',
             email: 'aninim@none.ru',
             photoURL: 'https://firebasestorage.googleapis.com/v0/b/gildiyatota.appspot.com/o/Tribal%20Marijuana%20Leaf%20Royalty%20Free%20Vector%20Image.jpg?alt=media&token=de2f5e30-73af-4ce0-9fb3-2c717dba6d41',
@@ -50,14 +61,11 @@
         },
         methods: {
             submit(){
-                let user = firebase.auth().currentUser;
-
-                user.updateProfile({
-                    displayName: this.displayName,
-                    photoURL: this.photoURL,
-                    email: this.email
-                }).then(function() {
-                    // Update successful.
+                this.snackbar = true
+                Vue.$db.collection("users").doc(this.user.id).update({
+                    displayName: this.user.displayName,
+                    photoURL: this.user.photoURL,
+                    email: this.user.email
                 })
             }
         }

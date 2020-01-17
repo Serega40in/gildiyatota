@@ -31,6 +31,14 @@
                         <v-list-item-title>Профиль</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
+                <v-list-item :to="'/users'">
+                    <v-list-item-action>
+                        <v-icon>mdi-battlenet</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title>Сообщество</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
                 <v-list-item :to="'/addarticle'">
                     <v-list-item-action>
                         <v-icon>mdi-pencil-outline</v-icon>
@@ -80,13 +88,15 @@
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
+            <v-list height="200"></v-list>
             <v-list>
                 <v-card-text>
                     <v-btn
                             v-for="(item, i) in socIcons"
                             v-bind:key="i"
                             icon
-                            class="mx-3 white--text"
+                            class="mx-3"
+                            @click="goLink(item.route)"
                     >
                         <v-icon size="24px">{{ item.icon }}</v-icon>
                     </v-btn>
@@ -125,11 +135,19 @@
             socIcons: [
                 {
                     icon: 'mdi-instagram',
-                    route: '/news'
+                    route: 'https://www.instagram.com/yaroslav_sibirskiy/?hl=ru'
                 },
                 {
                     icon: 'mdi-telegram',
-                    route: '/telegram'
+                    route: 'https://tele.gg/totfana'
+                },
+                {
+                    icon: 'mdi-youtube',
+                    route: 'https://www.youtube.com/channel/UCylkbZon4CkFU8G8GlmrJmQ'
+                },
+                {
+                    icon: 'mdi-vk',
+                    route: 'https://vk.com/soulreality'
                 }
             ],
             leftMenuItems: [
@@ -172,6 +190,9 @@
                         this.$store.dispatch('SIGNOUT')
                         this.$router.go('/')
                 })
+            },
+            goLink(route) {
+                window.open(route,'_blank')
             }
         },
         computed: {
